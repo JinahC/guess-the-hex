@@ -1,38 +1,151 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@800&family=Rammetto+One&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.colored-bg {
+  height: 100%;
+}
+
+.title {
+  margin: 0;
+  padding: 30px;
+  font-size: 60px;
+  font-family: 'Rammetto One', cursive;
   text-align: center;
+  color: #FFFFFF;
+  text-shadow: 11px 4px 4px rgba(0, 0, 0, 0.45);
+  -webkit-text-stroke: 1px #000;
+  /* text-stroke: 1px #000; */
+  letter-spacing: -5px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.game--question {
+  font-size: 24px;
+  font-family: 'Karla', sans-serif;
+  text-align: center;
+  color: #FFFFFF;
+  -webkit-text-stroke: 1px #000;
+  /* text-stroke: 1px #000; */
+  padding: 5px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.game--example {
+  font-size: 20px;
+  font-family: 'Karla', sans-serif;
+  text-align: center;
+  color: #FFFFFF;
+  -webkit-text-stroke: 1px #000;
+  /* text-stroke: 1px #000; */
+  padding: 5px;
+  margin-top: 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.game--input {
+  display: block;
+  margin: auto;
+  background: #FFFFFF;
+  border: 2px solid #000000;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  height: 45px;
+  text-align: center;
+  font-family: 'Karla', sans-serif;
+  font-size: 20px;
+}
+
+.game--button {
+  display: block;
+  margin: auto;
+  background: #FFFFFF;
+  border: 2px solid #000000;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  height: 45px;
+  text-align: center;
+  font-family: 'Karla', sans-serif;
+  font-size: 20px;
+  padding: 10px 50px;
+  margin-top: 100px;
+}
+
+.game--button:hover {
+  cursor: pointer;
+}
+
+.game--error {
+  font-size: 20px;
+  font-family: 'Karla', sans-serif;
+  text-align: center;
+  color: #7e0000;
+  /* -webkit-text-stroke: 1px #000; */
+  /* text-stroke: 1px #000; */
+  padding: 5px 10px;
+  margin-top: 10px;
+}
+
+.game-hex-codes-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-around;
 }
 
-.App-link {
-  color: #61dafb;
+.game--hex-codes {
+  font-size: 35px;
+  font-family: 'Karla', sans-serif;
+  text-align: center;
+  color: #FFFFFF;
+  -webkit-text-stroke: 1px #000;
+  min-width: 350px;
+  /* text-stroke: 1px #000; */
+  /* padding: 5px;
+  margin-top: 10px; */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.game--result {
+  font-size: 40px;
+  font-family: 'Karla', sans-serif;
+  text-align: center;
+  color: #FFFFFF;
+  -webkit-text-stroke: 1px #000;
+  margin-top: 70px;
+  padding: 10px;
+}
+
+@media screen and (max-width: 576px) {
+  .game-hex-codes-container {
+    flex-direction: column;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .game--hex-codes {
+    font-size: 25px;
+    margin: 15px;
+  }
+
+  .game--hex-codes.left::after {
+    content: '<---';
+    display: block;
+    margin-top: 5px;
+  }
+
+  .game--hex-codes.right::after {
+    content: '--->';
+    display: block;
+    margin-top: 5px;
+  }
+
+  .game--result {
+    font-size: 33px;
+    margin-top: 35px;
+  }
+
+  .game--button {
+    margin-top: 70px;
   }
 }
