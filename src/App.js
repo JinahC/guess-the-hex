@@ -1,15 +1,16 @@
-import React from 'react';
+import {useState} from 'react';
 import './App.css';
 import Game from './components/Game';
 
 function App() {
   const HEX_MAX = getDecimalValue('FFFFFF');
 
-  const [bgColor, setBgColor] = React.useState(generateRandomBgColor());
+  const [bgColor, setBgColor] = useState(generateRandomBgColor());
+  const [firstColor, setFirstColor] = useState(bgColor);
 
   function generateRandomBgColor() {
     let hex = getHexValue(Math.floor(Math.random() * (HEX_MAX + 1)));
-    return `#${hex}`;
+    return `#${hex.padStart(6, '0')}`;
   }
 
   function isCharacterANumber(char) {
@@ -84,11 +85,27 @@ function App() {
     return hexValue.split("").reverse().join("");
   }
 
+  function createNewGame() {
+    let newColor = generateRandomBgColor();
+    setBgColor(newColor);
+    setFirstColor(newColor);
+  }
 
   return (
-    <div style={{backgroundColor: bgColor}}>
-      <h1>Guess the Hex!</h1>
-      <Game />
+    <div 
+      className='colored-bg' 
+      style={{
+        backgroundColor: bgColor, 
+        backgroundImage: `linear-gradient(90deg, ${firstColor} 50%, ${bgColor} 50%)`
+      }}
+    >
+      <h1 className='title'>Guess the Hex!</h1>
+      <Game 
+        changeColor={setFirstColor} 
+        originalColor={bgColor}
+        getDecimalValue={getDecimalValue}
+        newGame={createNewGame}
+      />
     </div>
   );
 }
